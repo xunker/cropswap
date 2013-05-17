@@ -4,16 +4,49 @@
 
 
 .header {
+  position: relative;
+  margin: 15px 0;
+  padding: 9px 9px 4px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+
+  .home-link-div {
+    float:left;
+  }
+  .navigation-links {
+    float:right;
+  }
+
   ul {
+    display:block;
     li {
       display: inline;
     }
   }
 }
 
+@media (max-width: 320px) {
+  .image-container {
+    max-width: 250px;
+  }
+  image {
+    max-width: 250px;
+  }
+}
+
 @media (max-width: 480px) {
+  .navigation-icon {
+    display: block;
+  }
+
   .header {
+    text-align:right;
     ul {
+      margin-right:5px;
+      display:none;
       li {
         display: block;
       }
@@ -21,11 +54,56 @@
   }
 }
 
+ul.navigation-shown {
+  display: block;
+}
+
+@media (min-width: 481px) {
+  .navigation-icon {
+    display: none;
+  }
+}
 
 .content {
-
+  margin-bottom: 10px;
+  padding-left:10px;
+  padding-right:10px;
 }
 
 .footer {
+  padding: 8px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  display: block;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 10px;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
 
+/* home */
+
+.home {
+  .sharing-image {
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    width:295px;
+    text-align:right;
+  }
+  .sharing-text {
+    text-align: center;
+  }
 }

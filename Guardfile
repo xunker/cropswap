@@ -24,4 +24,8 @@ guard :sass, :input => 'src/stylesheets', :output => 'public/stylesheets', :run_
 guard :copy, :from => 'src', :to => 'public', :run_at_start => true do
   watch(%r{^.+\.js$})
   watch(%r{^.+\.css$})
+  watch(%r{^.+\.jpg$})
+  watch(%r{^.+\.svg$})
+  watch(%r{^.+\.gif$})
+  watch(%r{^.+\.png$})
 end

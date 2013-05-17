@@ -11,7 +11,7 @@
       return _ref;
     }
 
-    Navigation.prototype.template = "    <ul>      <li> <a class='home-link' href='#'>CropSwap</a> </li>      <li> <a class='search-link' href='#'>Search for Crops</a> </li>      <li> <a class='offer-link' href='#'>Offer your Crops</a> </li>      <li> <a class='account-link' href='#'>Your Account</a> </li>      <li> <a class='log-in-link' href='#'>Log In</a> </li>      <li> <a class='log-out-link' href='#'>Log Out</a> </li>    </ul>";
+    Navigation.prototype.template = "    <div class='home-link-div'> <a class='home-link' href='#'>CropSwap</a> </div>    <div class='navigation-icon'><a class='navigation-icon-link' href='#'><i class='icon-align-justify'></i></a></a></div>    <ul class='navigation-links'>      <li> <a class='search-link' href='#'>Search for Crops</a> </li>      <li> <a class='offer-link' href='#'>Offer your Crops</a> </li>      <li> <a class='account-link' href='#'>Your Account</a> </li>      <li> <a class='log-in-link' href='#'>Log In</a> </li>      <li> <a class='log-out-link' href='#'>Log Out</a> </li>    </ul>  ";
 
     Navigation.prototype.events = {
       "click a.home-link": function() {
@@ -22,12 +22,17 @@
       },
       "click a.offer-link": function() {
         return window.routeTo("offer");
-      }
+      },
+      "click a.navigation-icon-link": 'toggleNavigation'
     };
 
     Navigation.prototype.render = function() {
       $(this.el).html(rwh(this.template));
       return this;
+    };
+
+    Navigation.prototype.toggleNavigation = function() {
+      return $('.navigation ul.navigation-links').toggleClass('navigation-shown');
     };
 
     return Navigation;
