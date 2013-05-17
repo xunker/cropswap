@@ -24,13 +24,7 @@
 
     App.prototype.routes = {
       '': 'home',
-      'home': 'home',
-      'forgot_password': 'forgotPassword',
-      'signup': 'signup',
-      'books': 'books',
-      'books/:bookId': 'book',
-      'books/:bookId/*filePath': 'book',
-      'sync': 'sync'
+      'home': 'home'
     };
 
     App.prototype.home = function() {

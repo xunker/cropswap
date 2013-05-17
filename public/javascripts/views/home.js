@@ -11,12 +11,11 @@
       return _ref;
     }
 
-    Home.prototype.template = $('#home-template').html();
+    Home.prototype.template = "hello {{ world }}";
 
     Home.prototype.render = function() {
-      console.log(this.template);
-      $(this.el).html(Handlebars.compile($('#home-template').html())({
-        world: 'x'
+      $(this.el).html(rwh(this.template, {
+        world: 'y'
       }));
       return this;
     };

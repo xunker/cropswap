@@ -7,12 +7,6 @@ class CropSwap.Routers.App extends Backbone.Router
   routes:
     '': 'home',
     'home': 'home',
-    'forgot_password': 'forgotPassword',
-    'signup': 'signup',
-    'books': 'books',
-    'books/:bookId': 'book',
-    'books/:bookId/*filePath': 'book',
-    'sync': 'sync'
 
   home: ->
     view = new CropSwap.Views.Home()

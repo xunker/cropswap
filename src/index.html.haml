@@ -14,32 +14,15 @@
       %link{:href => "./#{s.gsub(/^public\//, '')}", :media => "all", :rel => "stylesheet", :type => "text/css"}
     - Dir["public/javascripts/**/*.js"].reject{|s| load_first.include?(s.split(/\//).last)}.sort.each do |s|
       %script{:src => "./#{s.gsub(/^public\//, '')}", :type => "text/javascript"}
-      %script{:id => "home-template", :type => "text/x-handlebars-template"}
-        hello {{ world }}
 
   %body
 
-    %section.main_nav
+    %section.header
+      .navigation
 
-      .navbar.navbar-inverse
-        .navbar-inner
-          .container
-            %button.btn-navbar.btn-reset.collapsed{:type => "button", :data_toggle => "collapse", :data_target => ".nav-collapse"}
-            %span#logo
-            / .feedback.hidden-phone
-            /   %a{:href=>"https://www.surveymonkey.com/s/HZKXKM9", :target=>'_blank'}
-            /     %button#feedback_link.btn FEEDBACK
-            .mboxDefault
-              .store-link
-                %a{:href=>"http://deseretbook.com/LDS-eBooks/c/61#q=&page=1&sort=popularity&facets=category:61", :target=>'_blank'}
-            .nav-collapse.collapse
+    %section.wrapper
+      Crop them' Swaps!
 
-    #sort-select
-
-    %section.container.wrapper
-      /= yield
-      Hello World!
-
-    / .feedback.visible-phone
-    /   %a{:href=>"https://www.surveymonkey.com/s/HZKXKM9", :target=>'_blank'}
-    /     %button#feedback_link.btn FEEDBACK
+    %section.footer
+      .legal
+        Some legal boilerplate here

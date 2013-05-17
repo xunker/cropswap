@@ -1,5 +1,20 @@
 (function() {
-  window.JST = {};
+  window.rwh = function(html_obj, data) {
+    var h;
+
+    h = html_obj.html ? html_obj.html() : h = html_obj;
+    return Handlebars.compile(h)(data);
+  };
+
+  window.routeTo = function(route) {
+    if (CropSwap.router.routes[route]) {
+      return CropSwap.router.navigate(route, {
+        trigger: true
+      });
+    } else {
+      return alert("No route named '" + route + "'!");
+    }
+  };
 
   window.CropSwap = {
     Models: {},
@@ -8,10 +23,12 @@
     Routers: {},
     init: function() {
       this.router = new CropSwap.Routers.App;
-      return Backbone.history.start({
+      Backbone.history.start({
         pushState: true,
         hashChange: false
       });
+      this.navigation = new CropSwap.Views.Navigation();
+      return $('.navigation').html(this.navigation.render().el);
     }
   };
 

@@ -1,4 +1,16 @@
-window.JST = {}
+window.rwh = (html_obj, data)->
+  h = if html_obj.html
+    html_obj.html()
+  else
+    h = html_obj
+  Handlebars.compile(h)(data)
+
+window.routeTo = (route)->
+  if CropSwap.router.routes[route]
+    CropSwap.router.navigate route, trigger: true
+  else
+    alert "No route named '#{route}'!"
+
 window.CropSwap =
   Models: {}
   Collections: {}
@@ -13,8 +25,8 @@ window.CropSwap =
 
     # @authenticate = new CropSwap.Models.Authenticate()
 
-    # @navigation_bar = new CropSwap.Views.Nav()
-    # @navigation_bar.render()
+    @navigation = new CropSwap.Views.Navigation()
+    $('.navigation').html(@navigation.render().el)
 
 $(document).ready ->
 

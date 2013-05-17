@@ -1,8 +1,7 @@
 class CropSwap.Views.Home extends Backbone.View
 
-  template: $('#home-template').html()
+  template: "hello {{ world }}"
 
   render: ->
-    console.log @template
-    $(@el).html(Handlebars.compile($('#home-template').html())({world: 'x'}))
+    $(@el).html(rwh(@template, {world: 'y'}))
     this
