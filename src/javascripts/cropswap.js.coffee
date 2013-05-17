@@ -26,7 +26,11 @@ window.CropSwap =
     # @authenticate = new CropSwap.Models.Authenticate()
 
     @navigation = new CropSwap.Views.Navigation()
+    @render_nav()
+
+  render_nav: ->
     $('.navigation').html(@navigation.render().el)
+    @navigation.delegateEvents()
 
 $(document).ready ->
 

@@ -28,7 +28,11 @@
         hashChange: false
       });
       this.navigation = new CropSwap.Views.Navigation();
-      return $('.navigation').html(this.navigation.render().el);
+      return this.render_nav();
+    },
+    render_nav: function() {
+      $('.navigation').html(this.navigation.render().el);
+      return this.navigation.delegateEvents();
     }
   };
 

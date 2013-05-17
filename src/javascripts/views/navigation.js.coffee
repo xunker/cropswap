@@ -8,8 +8,7 @@ class CropSwap.Views.Navigation extends Backbone.View
       <li> <a class='search-link' href='#'>Search for Crops</a> </li>
       <li> <a class='offer-link' href='#'>Offer your Crops</a> </li>
       <li> <a class='account-link' href='#'>Your Account</a> </li>
-      <li> <a class='log-in-link' href='#'>Log In</a> </li>
-      <li> <a class='log-out-link' href='#'>Log Out</a> </li>
+      <li class='login-logout'> <span></span><a href='#' class='login-logout-link'>log in</a> </li>
     </ul>
   "
 
@@ -17,17 +16,28 @@ class CropSwap.Views.Navigation extends Backbone.View
     "click a.home-link": -> window.routeTo("home")
     "click a.search-link": -> window.routeTo("search")
     "click a.offer-link": -> window.routeTo("offer")
+    "click a.account-link": -> window.routeTo("account")
     "click a.navigation-icon-link": 'toggleNavigation'
+    "click a.login-logout-link": 'toggleLoggedIn'
 
   render: ->
+    console.log 'rendering nav'
     $(@el).html(rwh(@template))
+    if CropSwap.logged_in_user
+      $('.login-logout-link').html('Click to Log out')
+      $('.login-logout span').html("Logged in as #{CropSwap.logged_in_user.name}.")
+
     this
 
   toggleNavigation: ->
     $('.navigation ul.navigation-links').toggleClass('navigation-shown')
 
-    # $('.navigation ul.navigation-links').toggle()
-    # if $('.navigation ul:visible')
-    #   $('.navigation-icon').hide()
-    # else
-    #   $('.navigation-icon').show()
+  toggleLoggedIn: ->
+    if CropSwap.logged_in_user
+      CropSwap.logged_in_user = undefined
+      FB.logout()
+      CropSwap.render_nav()
+    else
+      FB.login ->
+        []
+      , {scope: 'email, user_location'}

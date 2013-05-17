@@ -42,4 +42,5 @@ guard :copy, :from => 'src', :to => 'public', :mkpath => true, :delete => true, 
   watch(%r{^.+\.svg$})
   watch(%r{^.+\.gif$})
   watch(%r{^.+\.png$})
+  watch(%r{^.+\.html$})
 end
