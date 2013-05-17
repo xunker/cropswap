@@ -1,0 +1,45 @@
+!!!
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+%html
+  <!--<![endif]-->
+  %head
+    %meta{:name => "viewport",  :content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %title CropSwap
+    - load_first = [ 'jquery-1.9.1.js', 'underscore-min.js', 'backbone.js', 'handlebars.js', 'application.js' ]
+    - load_first.each do |s|
+      %script{:src => "./javascripts/#{s}", :type => "text/javascript"}
+
+    - Dir["public/stylesheets/**/*.css"].sort.each do |s|
+      %link{:href => "./#{s.gsub(/^public\//, '')}", :media => "all", :rel => "stylesheet", :type => "text/css"}
+    - Dir["public/javascripts/**/*.js"].reject{|s| load_first.include?(s.split(/\//).last)}.sort.each do |s|
+      %script{:src => "./#{s.gsub(/^public\//, '')}", :type => "text/javascript"}
+      %script{:id => "home-template", :type => "text/x-handlebars-template"}
+        hello {{ world }}
+
+  %body
+
+    %section.main_nav
+
+      .navbar.navbar-inverse
+        .navbar-inner
+          .container
+            %button.btn-navbar.btn-reset.collapsed{:type => "button", :data_toggle => "collapse", :data_target => ".nav-collapse"}
+            %span#logo
+            / .feedback.hidden-phone
+            /   %a{:href=>"https://www.surveymonkey.com/s/HZKXKM9", :target=>'_blank'}
+            /     %button#feedback_link.btn FEEDBACK
+            .mboxDefault
+              .store-link
+                %a{:href=>"http://deseretbook.com/LDS-eBooks/c/61#q=&page=1&sort=popularity&facets=category:61", :target=>'_blank'}
+            .nav-collapse.collapse
+
+    #sort-select
+
+    %section.container.wrapper
+      /= yield
+      Hello World!
+
+    / .feedback.visible-phone
+    /   %a{:href=>"https://www.surveymonkey.com/s/HZKXKM9", :target=>'_blank'}
+    /     %button#feedback_link.btn FEEDBACK

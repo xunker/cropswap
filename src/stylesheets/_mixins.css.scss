@@ -1,0 +1,58 @@
+/***** Global Mixins *****/
+
+@mixin group() {
+  &:before, &:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+  &:after {
+      clear: both;
+  }
+}
+
+/***** Media Queries *****/
+
+@mixin breakpoint($point) {
+  @if $point == wide-desktop {
+    @media (min-width: 1200px) { @content; }
+  }
+  @else if $point == desktop {
+    @media (min-width: 768px) and (max-width: 979px) { @content; }
+  }
+  @else if $point == tablet {
+    @media (max-width: 767px)  { @content; }
+  }
+  @else if $point == phone {
+    @media (max-width: 480px)  { @content; }
+  }
+  @else if $point == phone-portrait {
+    @media (max-width: 320px)  { @content; }
+  }
+}
+
+@mixin inset-text {
+ text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+}
+
+@mixin inner-shadow {
+   -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}
+
+@mixin rounded-corners($amount) {
+  -moz-border-radius: #{$amount};
+  -webkit-border-radius: #{$amount};
+  border-radius: #{$amount}; /* future proofing */
+}
+
+// modernizr class and content inject for fallback code
+@mixin no_svg { .no-svg & { @content } };
+
+// mixin that requires filename without path and fallback extension. Optional shorthand properties
+@mixin svg_background($filename, $extension, $bg-color:"", $bg-repeat:"", $bg-attachment:"", $bg-position:"") {
+  background: image-url($filename + ".svg") #{$bg-color} #{$bg-repeat} #{$bg-attachment} #{$bg-position};
+    @include no_svg { background: image-url($filename + $extension) #{$bg-color} #{$bg-repeat} #{$bg-attachment} #{$bg-position}; }
+}
