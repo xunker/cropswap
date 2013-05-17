@@ -11,21 +11,25 @@
       %script{:src => "./javascripts/#{s}", :type => "text/javascript"}
 
     - load_first_css = [ 'bootstrap.min.css', 'bootstrap-responsive.css' ]
+    - load_last_css = [ 'custom.css' ]
     - load_first_css.each do |s|
       %link{:href => "./stylesheets/#{s}", :media => "all", :rel => "stylesheet", :type => "text/css"}
 
-    - Dir["public/stylesheets/**/*.css"].reject{|s| load_first_css.include?(s.split(/\//).last)}.sort.each do |s|
+    - Dir["public/stylesheets/**/*.css"].reject{|s| [load_first_css+load_last_css].include?(s.split(/\//).last)}.sort.each do |s|
       %link{:href => "./#{s.gsub(/^public\//, '')}", :media => "all", :rel => "stylesheet", :type => "text/css"}
     - Dir["public/javascripts/**/*.js"].reject{|s| load_first_js.include?(s.split(/\//).last)}.sort.each do |s|
       %script{:src => "./#{s.gsub(/^public\//, '')}", :type => "text/javascript"}
+    - load_last_css.each do |s|
+      %link{:href => "./stylesheets/#{s}", :media => "all", :rel => "stylesheet", :type => "text/css"}
+
 
   %body
-
-    %section.header.row.span12
+    %section.row.span12.header
       .navigation
 
-    %section.wrapper.row.span12
-      Crop them' Swaps!
+    %section.row.span12.content
+      .wrapper
+        Crop them' Swaps!
 
-    %section.footer.row.span12
+    %section.row.span12.footer
       Some legal boilerplate here
