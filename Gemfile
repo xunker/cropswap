@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'json', '~> 1.7.7'
 gem 'guard-haml'
 # gem 'guard-coffeescript'
 gem 'guard-coffeescript', :github => 'netzpirat/guard-coffeescript', :branch => 'master'
