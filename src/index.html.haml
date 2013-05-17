@@ -3,7 +3,7 @@
 %html
   <!--<![endif]-->
   %head
-    %meta{:name => "viewport",  :content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"}
+    %meta{:name => "viewport",  :content => "width=device-width, initial-scale=1.0"}
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
     %title CropSwap
     - load_first_js = [ 'jquery-1.9.1.js', 'underscore-min.js', 'backbone.js', 'handlebars.js', 'application.js' ]
@@ -23,13 +23,15 @@
       %link{:href => "./stylesheets/#{s}", :media => "all", :rel => "stylesheet", :type => "text/css"}
 
 
-  %body
-    %section.row.span12.header
-      .navigation
+  %body.container-fluid
+    .row-fluid
+      .span12.header
+        .navigation
 
-    %section.row.span12.content
-      .wrapper
-        Crop them' Swaps!
-
-    %section.row.span12.footer
-      Some legal boilerplate here
+    .row-fluid
+      .span12.content
+        .wrapper
+          Crop them' Swaps!
+    .row-fluid
+      .span12.footer
+        Some legal boilerplate here
