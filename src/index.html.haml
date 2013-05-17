@@ -6,23 +6,26 @@
     %meta{:name => "viewport",  :content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"}
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
     %title CropSwap
-    - load_first = [ 'jquery-1.9.1.js', 'underscore-min.js', 'backbone.js', 'handlebars.js', 'application.js' ]
-    - load_first.each do |s|
+    - load_first_js = [ 'jquery-1.9.1.js', 'underscore-min.js', 'backbone.js', 'handlebars.js', 'application.js' ]
+    - load_first_js.each do |s|
       %script{:src => "./javascripts/#{s}", :type => "text/javascript"}
 
-    - Dir["public/stylesheets/**/*.css"].sort.each do |s|
+    - load_first_css = [ 'bootstrap.min.css', 'bootstrap-responsive.css' ]
+    - load_first_css.each do |s|
+      %link{:href => "./stylesheets/#{s}", :media => "all", :rel => "stylesheet", :type => "text/css"}
+
+    - Dir["public/stylesheets/**/*.css"].reject{|s| load_first_css.include?(s.split(/\//).last)}.sort.each do |s|
       %link{:href => "./#{s.gsub(/^public\//, '')}", :media => "all", :rel => "stylesheet", :type => "text/css"}
-    - Dir["public/javascripts/**/*.js"].reject{|s| load_first.include?(s.split(/\//).last)}.sort.each do |s|
+    - Dir["public/javascripts/**/*.js"].reject{|s| load_first_js.include?(s.split(/\//).last)}.sort.each do |s|
       %script{:src => "./#{s.gsub(/^public\//, '')}", :type => "text/javascript"}
 
   %body
 
-    %section.header
+    %section.header.row.span12
       .navigation
 
-    %section.wrapper
+    %section.wrapper.row.span12
       Crop them' Swaps!
 
-    %section.footer
-      .legal
-        Some legal boilerplate here
+    %section.footer.row.span12
+      Some legal boilerplate here
