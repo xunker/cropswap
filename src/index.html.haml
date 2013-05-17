@@ -6,6 +6,19 @@
     %meta{:name => "viewport",  :content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"}
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
     %title CropSwap
+
+    :javascript
+      JST = new Object();
+    - Dir["public/templates/**/*.hbs"].sort.each do |s|
+      - id = s.split(/\//).last.split(/\./).first
+      - contents = File.new(s).read
+      - if s =~ /haml/
+        - h = Haml::Engine.new(contents)
+        - contents = h.render
+      :javascript
+        var id = "#{id}";
+        JST[id] = "#{contents.gsub('"', '\"').gsub("\n", "\\n")}";
+
     - load_first_js = [ 'jquery-1.9.1.js', 'underscore-min.js', 'backbone.js', 'handlebars.js', 'application.js' ]
     - load_first_js.each do |s|
       %script{:src => "./javascripts/#{s}", :type => "text/javascript"}

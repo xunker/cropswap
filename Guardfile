@@ -28,4 +28,5 @@ guard :copy, :from => 'src', :to => 'public', :run_at_start => true do
   watch(%r{^.+\.svg$})
   watch(%r{^.+\.gif$})
   watch(%r{^.+\.png$})
+  watch(%r{^.+\.haml\.hbs$})
 end

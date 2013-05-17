@@ -1,1 +1,0 @@
-window.JST['home'] = 'Hello world!'
