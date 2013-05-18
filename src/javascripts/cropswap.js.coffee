@@ -57,6 +57,49 @@ window.CropSwap =
     if @is_logged_in() && Backbone.history.getFragment() == 'login'
       routeTo('home')
 
+  service_base: "http://swap-crops.com/WCF.svc"
+
+  get_user_id: ->
+    $.get "#{@service_base}/checkForUser/#{@logged_in_user.id}", (data) =>
+      console.log 'loading'
+      if data.success == false
+        console.log 'registering user'
+        user_data = {
+          "fbID":CropSwap.logged_in_user.id,
+          "userName":CropSwap.logged_in_user.name,
+          "email":CropSwap.logged_in_user.email,
+          "lat": CropSwap.logged_in_user.latitude,
+          "lon": CropSwap.logged_in_user.longitude,
+          "city": CropSwap.logged_in_user.location.name.split(',')[0],
+          "state": CropSwap.logged_in_user.location.name.split(',')[1],
+        }
+        $.ajax
+          url:"#{@service_base}/addUser",
+          type:"POST",
+          data:JSON.stringify(user_data),
+          contentType:"application/json",
+          dataType:"json",
+          success: (d2, ts, jxhr) =>
+            if d2.success == false
+              console.log 'registration failed'
+              console.log d2.message
+            else
+              CropSwap.logged_in_user.user_id = d2.message
+              console.log "registered user as #{d2.message}"
+        # $.ajax
+        #   type: "POST"
+        #   url: "http://swap-crops.com/WCF.svc/addUser"
+        #   data: JSON.stringify(user_data),
+        #   contentType: "application/json; charset=utf-8"
+        #   success: (msg) ->
+        #     console.log msg
+
+        #   error: (xhr, ajaxOptions, thrownError) ->
+        #     alert "error"
+      else
+        console.log 'user already registered'
+        CropSwap.logged_in_user.user_id = data.message
+
 $(document).ready ->
 
   if jQuery.reject # is the library loaded? should only be loaded on login page.

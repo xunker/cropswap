@@ -64,6 +64,47 @@
       if (this.is_logged_in() && Backbone.history.getFragment() === 'login') {
         return routeTo('home');
       }
+    },
+    service_base: "http://swap-crops.com/WCF.svc",
+    get_user_id: function() {
+      var _this = this;
+
+      return $.get("" + this.service_base + "/checkForUser/" + this.logged_in_user.id, function(data) {
+        var user_data;
+
+        console.log('loading');
+        if (data.success === false) {
+          console.log('registering user');
+          user_data = {
+            "fbID": CropSwap.logged_in_user.id,
+            "userName": CropSwap.logged_in_user.name,
+            "email": CropSwap.logged_in_user.email,
+            "lat": CropSwap.logged_in_user.latitude,
+            "lon": CropSwap.logged_in_user.longitude,
+            "city": CropSwap.logged_in_user.location.name.split(',')[0],
+            "state": CropSwap.logged_in_user.location.name.split(',')[1]
+          };
+          return $.ajax({
+            url: "" + _this.service_base + "/addUser",
+            type: "POST",
+            data: JSON.stringify(user_data),
+            contentType: "application/json",
+            dataType: "json",
+            success: function(d2, ts, jxhr) {
+              if (d2.success === false) {
+                console.log('registration failed');
+                return console.log(d2.message);
+              } else {
+                CropSwap.logged_in_user.user_id = d2.message;
+                return console.log("registered user as " + d2.message);
+              }
+            }
+          });
+        } else {
+          console.log('user already registered');
+          return CropSwap.logged_in_user.user_id = data.message;
+        }
+      });
     }
   };
 

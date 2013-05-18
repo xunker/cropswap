@@ -15,6 +15,9 @@
   border-radius: 4px; }
   .header .home-link-div {
     float: left; }
+    .header .home-link-div .home-link img {
+      width: 32px;
+      height: 30px; }
   .header .navigation-links {
     float: right; }
   .header ul {
@@ -107,6 +110,7 @@ ul.navigation-shown {
 
 /* offer detail */
 .offer-detail-container {
+  display: none;
   position: fixed;
   top: 10px; }
   .offer-detail-container .close-link {

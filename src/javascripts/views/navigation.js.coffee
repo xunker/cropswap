@@ -1,7 +1,9 @@
 class CropSwap.Views.Navigation extends Backbone.View
 
   template: "
-    <div class='home-link-div'> <a class='home-link' href='#'>CropSwap</a> </div>
+    <div class='home-link-div'> <a class='home-link' href='#'>
+      <img src='images/logo.png'>
+    </a> </div>
     <div class='navigation-icon'><a class='navigation-icon-link' href='#'><i class='icon-align-justify'></i></a></a></div>
     <ul class='navigation-links'>
 

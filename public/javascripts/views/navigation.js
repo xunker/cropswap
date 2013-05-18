@@ -11,7 +11,7 @@
       return _ref;
     }
 
-    Navigation.prototype.template = "    <div class='home-link-div'> <a class='home-link' href='#'>CropSwap</a> </div>    <div class='navigation-icon'><a class='navigation-icon-link' href='#'><i class='icon-align-justify'></i></a></a></div>    <ul class='navigation-links'>      <li> <a class='search-link' href='#'><i class='icon-search'></i>Search for Crops</a> </li>      <li> <a class='offer-link' href='#'><i class='icon-leaf'></i>Offer your Crops</a> </li>      <li> <a class='account-link' href='#'><i class='icon-wrench'></i><span>Your Account</span></a> </li>      <li class='login-logout'><a href='#' class='login-logout-link'><i class='icon-off'></i>Log In</a> </li>    </ul>  ";
+    Navigation.prototype.template = "    <div class='home-link-div'> <a class='home-link' href='#'>      <img src='images/logo.png'>    </a> </div>    <div class='navigation-icon'><a class='navigation-icon-link' href='#'><i class='icon-align-justify'></i></a></a></div>    <ul class='navigation-links'>      <li> <a class='search-link' href='#'><i class='icon-search'></i>Search for Crops</a> </li>      <li> <a class='offer-link' href='#'><i class='icon-leaf'></i>Offer your Crops</a> </li>      <li> <a class='account-link' href='#'><i class='icon-wrench'></i><span>Your Account</span></a> </li>      <li class='login-logout'><a href='#' class='login-logout-link'><i class='icon-off'></i>Log In</a> </li>    </ul>  ";
 
     Navigation.prototype.events = {
       "click a.home-link": function() {

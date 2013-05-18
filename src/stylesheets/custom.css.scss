@@ -19,6 +19,10 @@
 
   .home-link-div {
     float:left;
+    .home-link img {
+      width: 32px;
+      height: 30px;
+    }
   }
   .navigation-links {
     float:right;
@@ -155,7 +159,7 @@ ul.navigation-shown {
     padding-right:5px;
     padding-top:2px;
   }
-  // display:none;
+  display:none;
   position: fixed;
   top:10px;
 
