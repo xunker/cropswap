@@ -87,16 +87,14 @@ ul.navigation-shown {
 
 /* my account */
 .account .user-info {
+  width: 48%;
   min-width: 300px; }
   .account .user-info dl dt {
     margin-top: 10px; }
   .account .user-info dl dd {
     margin-top: 5px; }
-.account .offers {
-  min-width: 300px; }
-.account .crops {
-  min-width: 300px; }
 .account .feedback {
+  width: 48%;
   min-width: 300px; }
 
 /* offer */
@@ -105,11 +103,14 @@ ul.navigation-shown {
 
 .offer .have {
   min-width: 320px; }
+  .offer .have i {
+    font-size: 70%; }
 .offer .want {
   min-width: 320px; }
 
 /* offer detail */
 .offer-detail-container {
+  display: none;
   position: fixed;
   top: 10px; }
   .offer-detail-container .close-link {

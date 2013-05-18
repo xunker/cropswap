@@ -104,7 +104,8 @@
         "quatity": quantity,
         "unitsID": units,
         "cash": accept_cash,
-        "barter": accept_barter
+        "barter": accept_barter,
+        "seller": offer_type === "have"
       };
       console.log(JSON.stringify(crop_data));
       ({
@@ -129,7 +130,9 @@
           } else {
             _this.toggle();
             _this.reset_form();
-            return alert('saved!');
+            alert('saved!');
+            Backbone.history.fragment = void 0;
+            return routeTo('offer');
           }
         },
         error: function(data) {

@@ -120,6 +120,7 @@ ul.navigation-shown {
 
 .account {
   .user-info {
+    width: 48%;
     min-width: 300px;
     dl {
       dt {
@@ -131,15 +132,8 @@ ul.navigation-shown {
     }
   }
 
-  .offers {
-    min-width: 300px;
-  }
-
-  .crops {
-    min-width: 300px;
-  }
-
   .feedback {
+    width: 48%;
     min-width: 300px;
   }
 }
@@ -147,8 +141,14 @@ ul.navigation-shown {
 /* offer */
 .add-offer { min-width: 320px; }
 .offer {
-  .have { min-width: 320px; }
+  .have {
+    min-width: 320px;
+    i {
+      font-size: 70%;
+    }
+  }
   .want { min-width: 320px; }
+
 }
 
 /* offer detail */
@@ -159,7 +159,7 @@ ul.navigation-shown {
     padding-right:5px;
     padding-top:2px;
   }
-  // display:none;
+  display:none;
   position: fixed;
   top:10px;
 

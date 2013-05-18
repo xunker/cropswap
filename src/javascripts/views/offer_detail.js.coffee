@@ -79,7 +79,8 @@ class CropSwap.Views.OfferDetail extends Backbone.View
       "quatity"       : quantity,
       "unitsID"       : units,
       "cash"          : accept_cash,
-      "barter"        : accept_barter
+      "barter"        : accept_barter,
+      "seller"        : (offer_type == "have")
     }
 
     console.log JSON.stringify(crop_data)
@@ -102,6 +103,8 @@ class CropSwap.Views.OfferDetail extends Backbone.View
           @toggle()
           @reset_form()
           alert('saved!')
+          Backbone.history.fragment = undefined
+          routeTo('offer')
 
 
       error: (data) =>
