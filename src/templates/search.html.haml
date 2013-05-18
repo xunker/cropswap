@@ -1,13 +1,11 @@
 .row
   .span12
     %form#search-form
-      .control-group
-        .controls
-          .input-append
-            %input#terms{:autocomplete => "off", :name => "terms", :type => "text", :value => ""}/
-            %button.add-on{:type => "submit"}
-              %i.icon-search
-            %button.add-on.clear-results{:type => "button"}
-              %i.icon-remove-circle
+
+      %input#terms{:autocomplete => "off", :name => "terms", :type => "text", :value => ""}/
+      %button.add-on{:type => "submit"}
+        %i.icon-search
+      %button.add-on.clear-results{:type => "button"}
+        %i.icon-remove-circle
 .row
   .span12.search-results

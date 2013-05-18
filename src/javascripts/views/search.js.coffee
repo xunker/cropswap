@@ -2,10 +2,11 @@ class CropSwap.Views.Search extends Backbone.View
 
   template: JST['search']
 
+  events:
+    'submit #search-form': 'search'
+
   render: ->
-    model = {}
-    model.terms = 'xyz'
-    $(@el).html(rwh(@template, { model: model}))
+    $(@el).html(rwh(@template, {}))
     this
 
   search: (e) ->
@@ -21,21 +22,11 @@ class CropSwap.Views.Search extends Backbone.View
 
   responseHandler: (form) =>
     success: (model, response) =>
-      @undoLoading(model)
       @trigger('update-results')
 
       return
 
     error: (model, response) =>
-      @undoLoading(model)
-
-      if response.status == 422
-        errors = new ErrorList response
-        view = new CloudReader.Views.ErrorListView el: form, errors: errors
-        view.render()
-      else
-        error = new Error response
-        view = new CloudReader.Views.ErrorView el: @el, error: error
-        view.render()
-
+      console.log response
+      alert('there was an error')
       return

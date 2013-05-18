@@ -14,14 +14,12 @@
 
     Search.prototype.template = JST['search'];
 
-    Search.prototype.render = function() {
-      var model;
+    Search.prototype.events = {
+      'submit #search-form': 'search'
+    };
 
-      model = {};
-      model.terms = 'xyz';
-      $(this.el).html(rwh(this.template, {
-        model: model
-      }));
+    Search.prototype.render = function() {
+      $(this.el).html(rwh(this.template, {}));
       return this;
     };
 
@@ -45,28 +43,11 @@
 
       return {
         success: function(model, response) {
-          _this.undoLoading(model);
           _this.trigger('update-results');
         },
         error: function(model, response) {
-          var error, errors, view;
-
-          _this.undoLoading(model);
-          if (response.status === 422) {
-            errors = new ErrorList(response);
-            view = new CloudReader.Views.ErrorListView({
-              el: form,
-              errors: errors
-            });
-            view.render();
-          } else {
-            error = new Error(response);
-            view = new CloudReader.Views.ErrorView({
-              el: _this.el,
-              error: error
-            });
-            view.render();
-          }
+          console.log(response);
+          alert('there was an error');
         }
       };
     };

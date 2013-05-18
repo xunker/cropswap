@@ -13,7 +13,7 @@ server.mount_proc '/' do |req, res|
     res.body = File.new("./public/#{path}").read
   else
     res.status = 302
-    res['Location'] = '/'
+    res['Location'] = "/##{path}"
   end
 end
 
