@@ -32,6 +32,10 @@ window.CropSwap =
     $('.navigation').html(@navigation.render().el)
     @navigation.delegateEvents()
 
+  update_user_lat_long: ->
+    if CropSwap.logged_in_user
+      new CropSwap.Models.Geocode(CropSwap.logged_in_user.location.name)
+
 $(document).ready ->
 
   if jQuery.reject # is the library loaded? should only be loaded on login page.

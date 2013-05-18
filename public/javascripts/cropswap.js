@@ -33,6 +33,11 @@
     render_nav: function() {
       $('.navigation').html(this.navigation.render().el);
       return this.navigation.delegateEvents();
+    },
+    update_user_lat_long: function() {
+      if (CropSwap.logged_in_user) {
+        return new CropSwap.Models.Geocode(CropSwap.logged_in_user.location.name);
+      }
     }
   };
 

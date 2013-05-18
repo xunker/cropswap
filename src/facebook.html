@@ -55,6 +55,7 @@
     FB.api('/me', function(response) {
       console.log('Good to see you, ' + response.name + '.');
       CropSwap.logged_in_user = response
+      CropSwap.update_user_lat_long()
       CropSwap.render_nav()
     });
   }
