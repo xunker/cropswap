@@ -25,32 +25,37 @@
     };
 
     Search.prototype.search = function(e) {
-      var search_params, _ref1, _ref2,
+      var search_params, term, _ref1, _ref2,
         _this = this;
 
       e.preventDefault();
-      search_params = {
-        term: $('#term').val(),
-        lat: ((_ref1 = CropSwap.logged_in_user) != null ? _ref1.latitude : void 0) || 0.1,
-        lon: ((_ref2 = CropSwap.logged_in_user) != null ? _ref2.longitude : void 0) || 0.1
-      };
-      return $.ajax({
-        url: "" + CropSwap.service_base + "/search",
-        data: JSON.stringify(search_params),
-        type: "POST",
-        contentType: "application/json",
-        dataType: "json",
-        success: function(data) {
-          console.log('get search success');
-          console.log(data);
-          _this.results = data;
-          return _this.render();
-        },
-        error: function(data) {
-          console.log(data);
-          return alert('error search!');
-        }
-      });
+      term = $('#term').val();
+      if (term.toString().length < 3) {
+        return alert("Search string to short!");
+      } else {
+        search_params = {
+          term: term,
+          lat: ((_ref1 = CropSwap.logged_in_user) != null ? _ref1.latitude : void 0) || 0.1,
+          lon: ((_ref2 = CropSwap.logged_in_user) != null ? _ref2.longitude : void 0) || 0.1
+        };
+        return $.ajax({
+          url: "" + CropSwap.service_base + "/search",
+          data: JSON.stringify(search_params),
+          type: "POST",
+          contentType: "application/json",
+          dataType: "json",
+          success: function(data) {
+            console.log('get search success');
+            console.log(data);
+            _this.results = data;
+            return _this.render();
+          },
+          error: function(data) {
+            console.log(data);
+            return alert('error search!');
+          }
+        });
+      }
     };
 
     return Search;

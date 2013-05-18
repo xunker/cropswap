@@ -12,26 +12,31 @@ class CropSwap.Views.Search extends Backbone.View
   search: (e) ->
     e.preventDefault()
 
-    search_params = {
-      term: $('#term').val(),
-      lat: (CropSwap.logged_in_user?.latitude || 0.1),
-      lon: (CropSwap.logged_in_user?.longitude || 0.1)
-    }
+    term = $('#term').val()
 
-    $.ajax
-      url:"#{CropSwap.service_base}/search",
-      data: JSON.stringify(search_params),
-      type:"POST",
-      contentType:"application/json",
-      dataType:"json",
-      success: (data) =>
-        console.log('get search success')
-        console.log data
-        @results = data
-        @render()
+    if term.toString().length < 3
+      alert("Search string to short!")
+    else
+      search_params = {
+        term: term,
+        lat: (CropSwap.logged_in_user?.latitude || 0.1),
+        lon: (CropSwap.logged_in_user?.longitude || 0.1)
+      }
 
-      error: (data) =>
-        console.log data
-        alert('error search!')
+      $.ajax
+        url:"#{CropSwap.service_base}/search",
+        data: JSON.stringify(search_params),
+        type:"POST",
+        contentType:"application/json",
+        dataType:"json",
+        success: (data) =>
+          console.log('get search success')
+          console.log data
+          @results = data
+          @render()
+
+        error: (data) =>
+          console.log data
+          alert('error search!')
 
 
