@@ -1,7 +1,7 @@
-<div class='row'>
+<div class='row-fluid'>
   <div class='span12'>
     <form id='search-form'>
-      <input autocomplete='off' id='terms' name='terms' type='text' value=''>
+      <input autocomplete='off' id='term' name='terms' type='text' value=''>
       <button class='add-on' type='submit'>
         <i class='icon-search'></i>
       </button>
@@ -11,6 +11,15 @@
     </form>
   </div>
 </div>
-<div class='row'>
-  <div class='span12 search-results'></div>
+<div class='row-fluid'>
+  <div class='span6 search-results'>
+    {{#each results}}
+    <p>{{this.CropSubtype}} {{this.CropName}} ({{this.Amount}} {{this.UnitType}}), offered by {{this.DisplayName}}</p>
+    {{/each}}
+  </div>
+  <div class='span6'>
+    {{#if results}}
+    <img src='images/map.png'>
+    {{/if}}
+  </div>
 </div>

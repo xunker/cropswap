@@ -35,7 +35,7 @@
     </script>
     <script>
       var id = "search";
-      JST[id] = "<div class='row'>\n  <div class='span12'>\n    <form id='search-form'>\n      <input autocomplete='off' id='terms' name='terms' type='text' value=''>\n      <button class='add-on' type='submit'>\n        <i class='icon-search'></i>\n      </button>\n      <button class='add-on clear-results' type='button'>\n        <i class='icon-remove-circle'></i>\n      </button>\n    </form>\n  </div>\n</div>\n<div class='row'>\n  <div class='span12 search-results'></div>\n</div>\n";
+      JST[id] = "<div class='row-fluid'>\n  <div class='span12'>\n    <form id='search-form'>\n      <input autocomplete='off' id='term' name='terms' type='text' value=''>\n      <button class='add-on' type='submit'>\n        <i class='icon-search'></i>\n      </button>\n      <button class='add-on clear-results' type='button'>\n        <i class='icon-remove-circle'></i>\n      </button>\n    </form>\n  </div>\n</div>\n<div class='row-fluid'>\n  <div class='span6 search-results'>\n    {{#each results}}\n    <p>{{this.CropSubtype}} {{this.CropName}} ({{this.Amount}} {{this.UnitType}}), offered by {{this.DisplayName}}</p>\n    {{/each}}\n  </div>\n  <div class='span6'>\n    {{#if results}}\n    <img src='images/map.png'>\n    {{/if}}\n  </div>\n</div>\n";
     </script>
     <script src='./javascripts/jquery-1.9.1.js' type='text/javascript'></script>
     <script src='./javascripts/underscore-min.js' type='text/javascript'></script>
@@ -140,6 +140,7 @@
           CropSwap.logged_in_user = response
           CropSwap.update_user_lat_long()
           CropSwap.render_nav()
+          CropSwap.get_user_lat_long();
           CropSwap.get_user_id()
           CropSwap.direct_user();
         });

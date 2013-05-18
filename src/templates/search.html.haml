@@ -1,11 +1,18 @@
-.row
+.row-fluid
   .span12
     %form#search-form
 
-      %input#terms{:autocomplete => "off", :name => "terms", :type => "text", :value => ""}/
+      %input#term{:autocomplete => "off", :name => "terms", :type => "text", :value => ""}/
       %button.add-on{:type => "submit"}
         %i.icon-search
       %button.add-on.clear-results{:type => "button"}
         %i.icon-remove-circle
-.row
-  .span12.search-results
+.row-fluid
+  .span6.search-results
+    {{#each results}}
+    %p {{this.CropSubtype}} {{this.CropName}} ({{this.Amount}} {{this.UnitType}}), offered by {{this.DisplayName}}
+    {{/each}}
+  .span6
+    {{#if results}}
+    %img{:src=>'images/map.png'}
+    {{/if}}

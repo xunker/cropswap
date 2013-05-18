@@ -6,27 +6,32 @@ class CropSwap.Views.Search extends Backbone.View
     'submit #search-form': 'search'
 
   render: ->
-    $(@el).html(rwh(@template, {}))
+    $(@el).html(rwh(@template, { results: @results}))
     this
 
   search: (e) ->
     e.preventDefault()
 
-    form = $('#search-form')
-    attributes = new FormAttributes(form).attributes()
-    @book_id = attributes.book_id
+    search_params = {
+      term: $('#term').val(),
+      lat: (CropSwap.logged_in_user?.latitude || 0.1),
+      lon: (CropSwap.logged_in_user?.longitude || 0.1)
+    }
 
-    @model = new CropSwap.Models.Search()
-    console.log attributes
-    @model.save {terms: attributes.terms, book_id: attributes.book_id}, @responseHandler(form)
+    $.ajax
+      url:"#{CropSwap.service_base}/search",
+      data: JSON.stringify(search_params),
+      type:"POST",
+      contentType:"application/json",
+      dataType:"json",
+      success: (data) =>
+        console.log('get search success')
+        console.log data
+        @results = data
+        @render()
 
-  responseHandler: (form) =>
-    success: (model, response) =>
-      @trigger('update-results')
+      error: (data) =>
+        console.log data
+        alert('error search!')
 
-      return
 
-    error: (model, response) =>
-      console.log response
-      alert('there was an error')
-      return

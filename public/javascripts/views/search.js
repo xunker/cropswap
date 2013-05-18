@@ -1,6 +1,5 @@
 (function() {
   var _ref,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -8,7 +7,7 @@
     __extends(Search, _super);
 
     function Search() {
-      this.responseHandler = __bind(this.responseHandler, this);      _ref = Search.__super__.constructor.apply(this, arguments);
+      _ref = Search.__super__.constructor.apply(this, arguments);
       return _ref;
     }
 
@@ -19,37 +18,39 @@
     };
 
     Search.prototype.render = function() {
-      $(this.el).html(rwh(this.template, {}));
+      $(this.el).html(rwh(this.template, {
+        results: this.results
+      }));
       return this;
     };
 
     Search.prototype.search = function(e) {
-      var attributes, form;
+      var search_params, _ref1, _ref2,
+        _this = this;
 
       e.preventDefault();
-      form = $('#search-form');
-      attributes = new FormAttributes(form).attributes();
-      this.book_id = attributes.book_id;
-      this.model = new CropSwap.Models.Search();
-      console.log(attributes);
-      return this.model.save({
-        terms: attributes.terms,
-        book_id: attributes.book_id
-      }, this.responseHandler(form));
-    };
-
-    Search.prototype.responseHandler = function(form) {
-      var _this = this;
-
-      return {
-        success: function(model, response) {
-          _this.trigger('update-results');
-        },
-        error: function(model, response) {
-          console.log(response);
-          alert('there was an error');
-        }
+      search_params = {
+        term: $('#term').val(),
+        lat: ((_ref1 = CropSwap.logged_in_user) != null ? _ref1.latitude : void 0) || 0.1,
+        lon: ((_ref2 = CropSwap.logged_in_user) != null ? _ref2.longitude : void 0) || 0.1
       };
+      return $.ajax({
+        url: "" + CropSwap.service_base + "/search",
+        data: JSON.stringify(search_params),
+        type: "POST",
+        contentType: "application/json",
+        dataType: "json",
+        success: function(data) {
+          console.log('get search success');
+          console.log(data);
+          _this.results = data;
+          return _this.render();
+        },
+        error: function(data) {
+          console.log(data);
+          return alert('error search!');
+        }
+      });
     };
 
     return Search;
