@@ -1,0 +1,44 @@
+.row-fluid
+  .span12.center-text.account
+    .span3.user-info
+      %h3 Your User Info
+      %h6 (Use your Facebook account to change this info)
+      %dl
+        %dt Name:
+        %dd {{user.name}}
+
+        %dt Email Address:
+        %dd {{user.email}}
+
+        %dt Location:
+        %dd {{user.location.name}}
+
+        %dt Account Type
+        %dd Free User (<a href="#">Upgrade</a>)
+    .span3.crops
+      %h3 Your Crops
+      %ul
+        %li Crop Name with link
+        %li Crop Name with link
+        %li Crop Name with link
+        %li Crop Name with link
+        %li Crop Name with link
+        %li ..more..
+    .span3.offers
+      %h3 Your Offers
+      %ul
+        %li Offer Name with link
+        %li Offer Name with link
+        %li Offer Name with link
+        %li Offer Name with link
+        %li Offer Name with link
+        %li ..more..
+    .span3.feedback
+      %h3 Your Feedback
+      %ul
+        %li Feedback
+        %li Feedback
+        %li Feedback
+        %li Feedback
+        %li Feedback
+        %li ..more.. (expands inline, not new page)

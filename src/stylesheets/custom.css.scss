@@ -2,6 +2,10 @@
   text-align: right;
 }
 
+.center-text {
+  text-align: center;
+}
+
 
 .header {
   position: relative;
@@ -105,5 +109,33 @@ ul.navigation-shown {
   }
   .sharing-text {
     text-align: center;
+  }
+}
+
+/* my account */
+
+.account {
+  .user-info {
+    min-width: 300px;
+    dl {
+      dt {
+        margin-top: 10px;
+      }
+      dd {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .offers {
+    min-width: 300px;
+  }
+
+  .crops {
+    min-width: 300px;
+  }
+
+  .feedback {
+    min-width: 300px;
   }
 }

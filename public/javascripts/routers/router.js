@@ -41,7 +41,7 @@
     App.prototype.offer = function() {
       var view;
 
-      if (CropSwap.is_logged_in) {
+      if (CropSwap.is_logged_in()) {
         view = new CropSwap.Views.Offer();
         return $('.wrapper').html(view.render().el);
       } else {

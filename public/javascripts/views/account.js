@@ -14,7 +14,9 @@
     Account.prototype.template = JST['account'];
 
     Account.prototype.render = function() {
-      $(this.el).html(rwh(this.template, {}));
+      $(this.el).html(rwh(this.template, {
+        user: CropSwap.logged_in_user
+      }));
       return this;
     };
 

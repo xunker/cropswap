@@ -19,7 +19,7 @@ class CropSwap.Routers.App extends Backbone.Router
     $('.wrapper').html(view.render().el)
 
   offer: ->
-    if CropSwap.is_logged_in
+    if CropSwap.is_logged_in()
       view = new CropSwap.Views.Offer()
       $('.wrapper').html(view.render().el)
     else

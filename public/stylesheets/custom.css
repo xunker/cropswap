@@ -1,6 +1,9 @@
 .footer {
   text-align: right; }
 
+.center-text {
+  text-align: center; }
+
 .header {
   position: relative;
   margin: 15px 0;
@@ -78,3 +81,17 @@ ul.navigation-shown {
   text-align: right; }
 .home .sharing-text {
   text-align: center; }
+
+/* my account */
+.account .user-info {
+  min-width: 300px; }
+  .account .user-info dl dt {
+    margin-top: 10px; }
+  .account .user-info dl dd {
+    margin-top: 5px; }
+.account .offers {
+  min-width: 300px; }
+.account .crops {
+  min-width: 300px; }
+.account .feedback {
+  min-width: 300px; }
