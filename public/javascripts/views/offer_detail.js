@@ -41,9 +41,7 @@
       'change select.crop-type': 'update_crop_subtype',
       'click input.offer-type': 'update_offer_type',
       'click .save-btn': 'save_crop',
-      'click .clear-btn': function() {
-        return alert('GNDN');
-      }
+      'click .clear-btn': 'reset_form'
     };
 
     OfferDetail.prototype.render = function() {
@@ -87,9 +85,8 @@
       var accept_barter, accept_cash, crop_data, crop_sub_type, crop_type, offer_type, quantity, units,
         _this = this;
 
-      alert('saving');
       crop_type = parseInt($('select.crop-type').val());
-      crop_sub_type = parseInt($('select.crop-sub-type').val());
+      crop_sub_type = parseInt($('select.crop-sub-type').val() || 0);
       offer_type = $('.offer-type:checked').val();
       units = parseInt($('select.quantity-unit').val());
       accept_cash = $('.accept-cash:checked').size() > 0;
@@ -130,6 +127,8 @@
           if (data.success === false) {
             return alert('error saving');
           } else {
+            _this.toggle();
+            _this.reset_form();
             return alert('saved!');
           }
         },
@@ -138,6 +137,10 @@
           return alert('error!');
         }
       });
+    };
+
+    OfferDetail.prototype.reset_form = function() {
+      return this.render();
     };
 
     return OfferDetail;

@@ -30,7 +30,7 @@ class CropSwap.Views.OfferDetail extends Backbone.View
     'change select.crop-type': 'update_crop_subtype',
     'click input.offer-type': 'update_offer_type',
     'click .save-btn': 'save_crop',
-    'click .clear-btn': -> alert('GNDN')
+    'click .clear-btn': 'reset_form'
 
   render: ->
     $(@el).html(rwh(@template, { }))
@@ -59,9 +59,8 @@ class CropSwap.Views.OfferDetail extends Backbone.View
       $('.offer-detail .accept-type').hide()
 
   save_crop: ->
-    alert('saving')
     crop_type = parseInt($('select.crop-type').val())
-    crop_sub_type = parseInt($('select.crop-sub-type').val())
+    crop_sub_type = parseInt($('select.crop-sub-type').val() || 0)
     offer_type = $('.offer-type:checked').val()
     units = parseInt($('select.quantity-unit').val())
     accept_cash = $('.accept-cash:checked').size() > 0
@@ -100,8 +99,14 @@ class CropSwap.Views.OfferDetail extends Backbone.View
         if data.success == false
           alert('error saving')
         else
+          @toggle()
+          @reset_form()
           alert('saved!')
+
+
       error: (data) =>
         console.log data
         alert('error!')
 
+  reset_form: ->
+    @render()
