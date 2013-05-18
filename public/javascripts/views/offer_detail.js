@@ -39,7 +39,11 @@
     OfferDetail.prototype.events = {
       'click a.close-link': 'toggle',
       'change select.crop-type': 'update_crop_subtype',
-      'click input.offer-type': 'update_offer_type'
+      'click input.offer-type': 'update_offer_type',
+      'click .save-btn': 'save_crop',
+      'click .clear-btn': function() {
+        return alert('GNDN');
+      }
     };
 
     OfferDetail.prototype.render = function() {
@@ -77,6 +81,63 @@
       } else {
         return $('.offer-detail .accept-type').hide();
       }
+    };
+
+    OfferDetail.prototype.save_crop = function() {
+      var accept_barter, accept_cash, crop_data, crop_sub_type, crop_type, offer_type, quantity, units,
+        _this = this;
+
+      alert('saving');
+      crop_type = parseInt($('select.crop-type').val());
+      crop_sub_type = parseInt($('select.crop-sub-type').val());
+      offer_type = $('.offer-type:checked').val();
+      units = parseInt($('select.quantity-unit').val());
+      accept_cash = $('.accept-cash:checked').size() > 0;
+      accept_barter = $('.accept-barter:checked').size() > 0;
+      quantity = $('input.quantity').val();
+      if (/\./.test(quantity)) {
+        quantity = parseFloat(quantity);
+      } else {
+        quantity = parseFloat("" + quantity + ".0");
+      }
+      crop_data = {
+        "UserID": CropSwap.logged_in_user.user_id,
+        "cropTypeID": crop_type,
+        "cropSubTypeID": crop_sub_type,
+        "quatity": quantity,
+        "unitsID": units,
+        "cash": accept_cash,
+        "barter": accept_barter
+      };
+      console.log(JSON.stringify(crop_data));
+      ({
+        "UserID": 24,
+        "cropTypeID": 3,
+        "cropSubTypeID": 1,
+        "quatity": 12,
+        "unitsID": null,
+        "cash": false,
+        "barter": false
+      });
+      return $.ajax({
+        url: "" + CropSwap.service_base + "/offer",
+        type: "POST",
+        data: JSON.stringify(crop_data),
+        contentType: "application/json",
+        dataType: "json",
+        success: function(data) {
+          console.log(data);
+          if (data.success === false) {
+            return alert('error saving');
+          } else {
+            return alert('saved!');
+          }
+        },
+        error: function(data) {
+          console.log(data);
+          return alert('error!');
+        }
+      });
     };
 
     return OfferDetail;

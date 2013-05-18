@@ -95,14 +95,14 @@
                 console.log('registration failed');
                 return console.log(d2.message);
               } else {
-                CropSwap.logged_in_user.user_id = d2.message;
+                CropSwap.logged_in_user.user_id = parseInt(d2.message);
                 return console.log("registered user as " + d2.message);
               }
             }
           });
         } else {
           console.log('user already registered');
-          return CropSwap.logged_in_user.user_id = data.message;
+          return CropSwap.logged_in_user.user_id = parseInt(data.message);
         }
       });
     }

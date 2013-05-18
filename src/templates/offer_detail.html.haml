@@ -39,13 +39,13 @@
       %h3.accept-text I will accept
       .accept-types
         %label.checkbox
-          %input#acceptType1.accept-type{:type => "checkbox", :name => "acceptType", :value => "cash", "checked" => "checked"}
+          %input#acceptType1.accept-type.accept-cash{:type => "checkbox", :name => "acceptType", :value => "cash", "checked" => "checked"}
           Cash
         %label.checkbox
-          %input#acceptType2.accept-type{:type => "checkbox", :name => "acceptType", :value => "barter"}
+          %input#acceptType2.accept-type.accept-barter{:type => "checkbox", :name => "acceptType", :value => "barter"}
           Trade
 
     .row-fluid.buttons
-      %a.btn Save
+      %a.btn.save-btn Save
       .clear-button
-        %a.btn Clear
+        %a.btn.clear-btn Clear

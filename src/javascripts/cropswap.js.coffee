@@ -84,7 +84,7 @@ window.CropSwap =
               console.log 'registration failed'
               console.log d2.message
             else
-              CropSwap.logged_in_user.user_id = d2.message
+              CropSwap.logged_in_user.user_id = parseInt(d2.message)
               console.log "registered user as #{d2.message}"
         # $.ajax
         #   type: "POST"
@@ -98,7 +98,7 @@ window.CropSwap =
         #     alert "error"
       else
         console.log 'user already registered'
-        CropSwap.logged_in_user.user_id = data.message
+        CropSwap.logged_in_user.user_id = parseInt(data.message)
 
 $(document).ready ->
 
