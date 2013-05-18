@@ -2,7 +2,6 @@ class CropSwap.Models.Geocode extends Backbone.Model
 
   urlRoot: 'http://maps.googleapis.com/maps/api/geocode/json'
 
-
   initialize: (loc) ->
     @loc = loc
     @load()

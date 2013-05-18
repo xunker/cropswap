@@ -24,13 +24,21 @@
 
     App.prototype.routes = {
       '': 'home',
-      'home': 'home'
+      'home': 'home',
+      'search': 'search'
     };
 
     App.prototype.home = function() {
       var view;
 
       view = new CropSwap.Views.Home();
+      return $('.wrapper').html(view.render().el);
+    };
+
+    App.prototype.search = function() {
+      var view;
+
+      view = new CropSwap.Views.Search();
       return $('.wrapper').html(view.render().el);
     };
 

@@ -7,9 +7,14 @@ class CropSwap.Routers.App extends Backbone.Router
   routes:
     '': 'home',
     'home': 'home',
+    'search': 'search'
 
   home: ->
     view = new CropSwap.Views.Home()
+    $('.wrapper').html(view.render().el)
+
+  search: ->
+    view = new CropSwap.Views.Search()
     $('.wrapper').html(view.render().el)
 
   triggerRouteChange: (event) ->
