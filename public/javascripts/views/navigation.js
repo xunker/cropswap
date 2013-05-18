@@ -27,7 +27,9 @@
         return window.routeTo("account");
       },
       "click a.navigation-icon-link": 'toggleNavigation',
-      "click a.login-logout-link": 'toggleLoggedIn'
+      "click a.login-logout-link": function() {
+        return CropSwap.toggleLoggedIn();
+      }
     };
 
     Navigation.prototype.render = function() {
@@ -42,20 +44,6 @@
 
     Navigation.prototype.toggleNavigation = function() {
       return $('.navigation ul.navigation-links').toggleClass('navigation-shown');
-    };
-
-    Navigation.prototype.toggleLoggedIn = function() {
-      if (CropSwap.logged_in_user) {
-        CropSwap.logged_in_user = void 0;
-        FB.logout();
-        return CropSwap.render_nav();
-      } else {
-        return FB.login(function() {
-          return [];
-        }, {
-          scope: 'email, user_location'
-        });
-      }
     };
 
     return Navigation;

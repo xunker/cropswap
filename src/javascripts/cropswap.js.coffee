@@ -36,6 +36,23 @@ window.CropSwap =
     if CropSwap.logged_in_user
       new CropSwap.Models.Geocode(CropSwap.logged_in_user.location.name)
 
+  is_logged_in: ->
+    !!CropSwap.logged_in_user
+
+  toggleLoggedIn: ->
+    if CropSwap.logged_in_user
+      CropSwap.logged_in_user = undefined
+      FB.logout()
+      CropSwap.render_nav()
+    else
+      FB.login ->
+        []
+      , {scope: 'email, user_location'}
+
+  direct_user: ->
+    if @is_logged_in() && Backbone.history.getFragment() == 'login'
+      routeTo('home')
+
 $(document).ready ->
 
   if jQuery.reject # is the library loaded? should only be loaded on login page.

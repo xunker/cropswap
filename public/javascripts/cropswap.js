@@ -38,6 +38,27 @@
       if (CropSwap.logged_in_user) {
         return new CropSwap.Models.Geocode(CropSwap.logged_in_user.location.name);
       }
+    },
+    is_logged_in: function() {
+      return !!CropSwap.logged_in_user;
+    },
+    toggleLoggedIn: function() {
+      if (CropSwap.logged_in_user) {
+        CropSwap.logged_in_user = void 0;
+        FB.logout();
+        return CropSwap.render_nav();
+      } else {
+        return FB.login(function() {
+          return [];
+        }, {
+          scope: 'email, user_location'
+        });
+      }
+    },
+    direct_user: function() {
+      if (this.is_logged_in() && Backbone.history.getFragment() === 'login') {
+        return routeTo('home');
+      }
     }
   };
 

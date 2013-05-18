@@ -18,7 +18,7 @@ class CropSwap.Views.Navigation extends Backbone.View
     "click a.offer-link": -> window.routeTo("offer")
     "click a.account-link": -> window.routeTo("account")
     "click a.navigation-icon-link": 'toggleNavigation'
-    "click a.login-logout-link": 'toggleLoggedIn'
+    "click a.login-logout-link": -> CropSwap.toggleLoggedIn()
 
   render: ->
     console.log 'rendering nav'
@@ -32,12 +32,4 @@ class CropSwap.Views.Navigation extends Backbone.View
   toggleNavigation: ->
     $('.navigation ul.navigation-links').toggleClass('navigation-shown')
 
-  toggleLoggedIn: ->
-    if CropSwap.logged_in_user
-      CropSwap.logged_in_user = undefined
-      FB.logout()
-      CropSwap.render_nav()
-    else
-      FB.login ->
-        []
-      , {scope: 'email, user_location'}
+

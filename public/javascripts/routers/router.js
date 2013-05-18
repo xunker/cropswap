@@ -12,20 +12,16 @@
     }
 
     App.prototype.initialize = function() {
-      this.bind("all", this.triggerRouteChange);
-      this.bind({
-        "route:books": this.loadSearch,
-        "route:book": this.loadSearch
-      });
-      return this.bind({
-        "all": this.bodyID
-      });
+      return this.bind("all", this.triggerRouteChange);
     };
 
     App.prototype.routes = {
       '': 'home',
       'home': 'home',
-      'search': 'search'
+      'search': 'search',
+      'offer': 'offer',
+      'account': 'account',
+      'login': 'login'
     };
 
     App.prototype.home = function() {
@@ -39,6 +35,35 @@
       var view;
 
       view = new CropSwap.Views.Search();
+      return $('.wrapper').html(view.render().el);
+    };
+
+    App.prototype.offer = function() {
+      var view;
+
+      if (CropSwap.is_logged_in) {
+        view = new CropSwap.Views.Offer();
+        return $('.wrapper').html(view.render().el);
+      } else {
+        return routeTo('login');
+      }
+    };
+
+    App.prototype.account = function() {
+      var view;
+
+      if (CropSwap.is_logged_in()) {
+        view = new CropSwap.Views.Account();
+        return $('.wrapper').html(view.render().el);
+      } else {
+        return routeTo('login');
+      }
+    };
+
+    App.prototype.login = function() {
+      var view;
+
+      view = new CropSwap.Views.Login();
       return $('.wrapper').html(view.render().el);
     };
 
