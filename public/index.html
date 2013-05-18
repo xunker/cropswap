@@ -22,8 +22,16 @@
       JST[id] = "<h2>\n  You must\n  <a class='login-logout-link' href='#'>\n    log in\n  </a>\n  to access that page.\n</h2>\n";
     </script>
     <script>
+      var id = "offer detail";
+      JST[id] = "offer detail\n";
+    </script>
+    <script>
       var id = "offer";
-      JST[id] = "offer page";
+      JST[id] = "<div class='row-fluid'>\n  <div class='span12 center-text add-offer'>\n    <h6></h6>\n    <a class='add-crop-or-offer-link' href='#'>\n      <i class='icon-plus-sign'></i>\n      Add Crop or Offer\n    </a>\n  </div>\n  <div class='span12 center-text offer'>\n    <div class='span6 have'>\n      <h3>You Have</h3>\n    </div>\n    <div class='span6 want'>\n      <h3>You Want</h3>\n    </div>\n  </div>\n</div>\n";
+    </script>
+    <script>
+      var id = "offer_detail";
+      JST[id] = "<div class='offer-detail'>\n  <a class='close-link' href='#'>\n    <i class='icon-remove-sign'></i>\n  </a>\n  offer detail\n</div>\n";
     </script>
     <script>
       var id = "search";
@@ -67,6 +75,7 @@
     <script src='./javascripts/views/login.js' type='text/javascript'></script>
     <script src='./javascripts/views/navigation.js' type='text/javascript'></script>
     <script src='./javascripts/views/offer.js' type='text/javascript'></script>
+    <script src='./javascripts/views/offer_detail.js' type='text/javascript'></script>
     <script src='./javascripts/views/search.js' type='text/javascript'></script>
     <link href='./stylesheets/custom.css' media='all' rel='stylesheet' type='text/css'>
   </head>
@@ -151,5 +160,6 @@
         Some legal boilerplate here
       </div>
     </div>
+    <div class='offer-detail-container'></div>
   </body>
 </html>

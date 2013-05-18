@@ -13,9 +13,19 @@
 
     Offer.prototype.template = JST['offer'];
 
+    Offer.prototype.events = {
+      'click a.add-crop-or-offer-link': 'open_crop_or_offer'
+    };
+
     Offer.prototype.render = function() {
       $(this.el).html(rwh(this.template, {}));
       return this;
+    };
+
+    Offer.prototype.open_crop_or_offer = function() {
+      var _ref1;
+
+      return (_ref1 = CropSwap.detail) != null ? _ref1.toggle() : void 0;
     };
 
     return Offer;

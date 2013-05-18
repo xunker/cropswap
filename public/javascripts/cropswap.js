@@ -28,7 +28,10 @@
         hashChange: false
       });
       this.navigation = new CropSwap.Views.Navigation();
-      return this.render_nav();
+      this.render_nav();
+      this.detail = new CropSwap.Views.OfferDetail();
+      $('.offer-detail-container').html(this.detail.render().el);
+      return this.detail.delegateEvents();
     },
     render_nav: function() {
       $('.navigation').html(this.navigation.render().el);

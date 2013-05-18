@@ -28,6 +28,10 @@ window.CropSwap =
     @navigation = new CropSwap.Views.Navigation()
     @render_nav()
 
+    @detail = new CropSwap.Views.OfferDetail()
+    $('.offer-detail-container').html(@detail.render().el)
+    @detail.delegateEvents()
+
   render_nav: ->
     $('.navigation').html(@navigation.render().el)
     @navigation.delegateEvents()

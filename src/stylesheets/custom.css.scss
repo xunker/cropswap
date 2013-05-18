@@ -139,3 +139,25 @@ ul.navigation-shown {
     min-width: 300px;
   }
 }
+
+/* offer */
+.add-offer { min-width: 320px; }
+.offer {
+  .have { min-width: 320px; }
+  .want { min-width: 320px; }
+}
+
+/* offer detail */
+
+.offer-detail-container {
+  display:none;
+  position: fixed;
+  top:0;
+  left: 0;
+  width:100px;
+  height:100px;
+  .offer-detail {
+    border: 1px solid #000000;
+    color: red;
+  }
+}
