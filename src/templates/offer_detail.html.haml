@@ -1,4 +1,21 @@
 .offer-detail
   %a.close-link{:href => '#'}
     %i.icon-remove-sign
-  offer detail
+  .row
+    %select.crop-type
+      %option -- Select --
+      %option{"value" => '3'} Tomatoes
+      %option{"value" => '4'} Apples
+      %option{"value" => '5'} Grapes
+      %option{"value" => '6'} Lettuce
+      %option{"value" => '7'} Carrots
+      %option{"value" => '8'} Pears
+      %option{"value" => '9'} Eggs
+      %option{"value" => '10'} Honey
+      %option{"value" => '11'} Bell Peppers
+      %option{"value" => '12'} Jalapeno Peppers
+      %option{"value" => '13'} Spinach
+    %select.crop-sub-type{:style => 'display:none'}
+
+
+  {"UserID":9,"cropTypeID":3, "cropSubTypeID": 0, "quatity": 7.2, "cost":10.5, "unitsID":2, "cash":true, "barter":false}

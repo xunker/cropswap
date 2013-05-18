@@ -67,4 +67,16 @@ $(document).ready ->
         chrome1: true, chrome2: true, chrome3: true, chrome4: true,
         safari1: true, safari2: true, safari3: true
 
+  Handlebars.registerHelper "key_value", (obj, fn)->
+    (fn(key: key, value: value) for own key, value of obj).join('')
+
+  Handlebars.registerHelper "each_with_key", (obj, fn)->
+    key_name = fn.hash.key
+    buffer   = for own key, value of obj
+        value[key_name] = key
+        fn(value)
+    buffer.join('')
+
   CropSwap.init()
+
+

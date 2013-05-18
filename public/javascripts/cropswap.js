@@ -1,4 +1,6 @@
 (function() {
+  var __hasProp = {}.hasOwnProperty;
+
   window.rwh = function(html_obj, data) {
     var h;
 
@@ -86,6 +88,42 @@
         }
       });
     }
+    Handlebars.registerHelper("key_value", function(obj, fn) {
+      var key, value;
+
+      return ((function() {
+        var _results;
+
+        _results = [];
+        for (key in obj) {
+          if (!__hasProp.call(obj, key)) continue;
+          value = obj[key];
+          _results.push(fn({
+            key: key,
+            value: value
+          }));
+        }
+        return _results;
+      })()).join('');
+    });
+    Handlebars.registerHelper("each_with_key", function(obj, fn) {
+      var buffer, key, key_name, value;
+
+      key_name = fn.hash.key;
+      buffer = (function() {
+        var _results;
+
+        _results = [];
+        for (key in obj) {
+          if (!__hasProp.call(obj, key)) continue;
+          value = obj[key];
+          value[key_name] = key;
+          _results.push(fn(value));
+        }
+        return _results;
+      })();
+      return buffer.join('');
+    });
     return CropSwap.init();
   });
 
