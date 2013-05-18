@@ -5,10 +5,10 @@ class CropSwap.Views.Navigation extends Backbone.View
     <div class='navigation-icon'><a class='navigation-icon-link' href='#'><i class='icon-align-justify'></i></a></a></div>
     <ul class='navigation-links'>
 
-      <li> <a class='search-link' href='#'>Search for Crops</a> </li>
-      <li> <a class='offer-link' href='#'>Offer your Crops</a> </li>
-      <li> <a class='account-link' href='#'>Your Account</a> </li>
-      <li class='login-logout'> <span></span><a href='#' class='login-logout-link'>log in</a> </li>
+      <li> <a class='search-link' href='#'><i class='icon-search'></i>Search for Crops</a> </li>
+      <li> <a class='offer-link' href='#'><i class='icon-leaf'></i>Offer your Crops</a> </li>
+      <li> <a class='account-link' href='#'><i class='icon-wrench'></i><span>Your Account</span></a> </li>
+      <li class='login-logout'><a href='#' class='login-logout-link'><i class='icon-off'></i>Log In</a> </li>
     </ul>
   "
 
@@ -24,8 +24,8 @@ class CropSwap.Views.Navigation extends Backbone.View
     console.log 'rendering nav'
     $(@el).html(rwh(@template))
     if CropSwap.logged_in_user
-      $('.login-logout-link').html('Click to Log out')
-      $('.login-logout span').html("Logged in as #{CropSwap.logged_in_user.name}.")
+      $('.login-logout-link').html('<i class="icon-off"></i>Log out')
+      $('.account-link span').html(CropSwap.logged_in_user.name)
 
     this
 
