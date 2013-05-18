@@ -1,21 +1,51 @@
 .offer-detail
   %a.close-link{:href => '#'}
     %i.icon-remove-sign
-  .row
-    %select.crop-type
-      %option -- Select --
-      %option{"value" => '3'} Tomatoes
-      %option{"value" => '4'} Apples
-      %option{"value" => '5'} Grapes
-      %option{"value" => '6'} Lettuce
-      %option{"value" => '7'} Carrots
-      %option{"value" => '8'} Pears
-      %option{"value" => '9'} Eggs
-      %option{"value" => '10'} Honey
-      %option{"value" => '11'} Bell Peppers
-      %option{"value" => '12'} Jalapeno Peppers
-      %option{"value" => '13'} Spinach
-    %select.crop-sub-type{:style => 'display:none'}
+  .inner-container
+    .row-fluid
+      %label.radio
+        %input#offerType1.offer-type{:type => "radio", :name => "offerType", :value => "have", "checked" => "checked"}
+        I Have
+      %label.radio
+        %input#offerType2.offer-type{:type => "radio", :name => "offerType", :value => "want"}
+        I Want
 
+    .row-fluid
+      %select.crop-type
+        %option -- Select --
+        %option{"value" => '3'} Tomatoes
+        %option{"value" => '4'} Apples
+        %option{"value" => '5'} Grapes
+        %option{"value" => '6'} Lettuce
+        %option{"value" => '7'} Carrots
+        %option{"value" => '8'} Pears
+        %option{"value" => '9'} Eggs
+        %option{"value" => '10'} Honey
+        %option{"value" => '11'} Bell Peppers
+        %option{"value" => '12'} Jalapeno Peppers
+        %option{"value" => '13'} Spinach
+      %select.crop-sub-type{:style => 'display:none'}
+    .row-fluid
+      %input.quantity{:type => 'text', :size => 5, :placeholder => 'quantity', :name => 'quantity'}
+      %select.quantity-unit
+        %option -- Select --
+        %option{"value" => '1'} Each
+        %option{"value" => '2'} Bushels
+        %option{"value" => '3'} Gallons
+        %option{"value" => '4'} Plants
+        %option{"value" => '5'} Pounds
+        %option{"value" => '6'} Dollars
+    .row-fluid.accept-type
+      %h3.accept-text I will accept
+      .accept-types
+        %label.checkbox
+          %input#acceptType1.accept-type{:type => "checkbox", :name => "acceptType", :value => "cash", "checked" => "checked"}
+          Cash
+        %label.checkbox
+          %input#acceptType2.accept-type{:type => "checkbox", :name => "acceptType", :value => "barter"}
+          Trade
 
-  {"UserID":9,"cropTypeID":3, "cropSubTypeID": 0, "quatity": 7.2, "cost":10.5, "unitsID":2, "cash":true, "barter":false}
+    .row-fluid.buttons
+      %a.btn Save
+      .clear-button
+        %a.btn Clear

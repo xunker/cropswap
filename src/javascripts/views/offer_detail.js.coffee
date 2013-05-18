@@ -28,10 +28,13 @@ class CropSwap.Views.OfferDetail extends Backbone.View
 
   events:
     'click a.close-link': 'toggle',
-    'change select.crop-type': 'update_crop_subtype'
+    'change select.crop-type': 'update_crop_subtype',
+    'click input.offer-type': 'update_offer_type'
 
   render: ->
     $(@el).html(rwh(@template, { }))
+    @update_crop_subtype()
+    @update_offer_type()
     this
 
   toggle: ->
@@ -48,5 +51,9 @@ class CropSwap.Views.OfferDetail extends Backbone.View
         h = h + "<option value='#{k}'>#{v}</option>\n"
       $('select.crop-sub-type').html(h)
 
-
+  update_offer_type: ->
+    if $('#offerType1:checked').size() > 0
+      $('.offer-detail .accept-type').show()
+    else
+      $('.offer-detail .accept-type').hide()
 

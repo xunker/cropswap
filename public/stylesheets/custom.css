@@ -107,21 +107,20 @@ ul.navigation-shown {
 
 /* offer detail */
 .offer-detail-container {
-  display: none;
   position: fixed;
   top: 10px; }
   .offer-detail-container .close-link {
     float: right;
     padding-right: 5px;
     padding-top: 2px; }
-  @media (min-width: 767px) {
+  @media (min-width: 481px) {
     .offer-detail-container {
-      width: 50%;
-      left: 23%; } }
-  @media (max-width: 768px) {
+      width: 30%;
+      left: 32%; } }
+  @media (max-width: 480px) {
     .offer-detail-container {
-      width: 100%;
-      left: 0px; } }
+      width: 98%;
+      left: 1%; } }
   .offer-detail-container .offer-detail {
     min-height: 240px;
     border: 1px solid #ddd;
@@ -129,3 +128,13 @@ ul.navigation-shown {
     -moz-border-radius: 4px;
     border-radius: 4px;
     background: white; }
+    .offer-detail-container .offer-detail .inner-container {
+      padding: 10px; }
+      .offer-detail-container .offer-detail .inner-container label.radio {
+        display: inline-block; }
+      .offer-detail-container .offer-detail .inner-container .quantity {
+        width: 50px; }
+      .offer-detail-container .offer-detail .inner-container select {
+        width: 120px; }
+      .offer-detail-container .offer-detail .inner-container .buttons .clear-button {
+        float: right; }

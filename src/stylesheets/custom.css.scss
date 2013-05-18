@@ -155,20 +155,20 @@ ul.navigation-shown {
     padding-right:5px;
     padding-top:2px;
   }
-  display:none;
+  // display:none;
   position: fixed;
   top:10px;
 
 
 
-  @media (min-width: 767px) {
-    width: 50%;
-    left: 23%;
+  @media (min-width: 481px) {
+    width: 30%;
+    left: 32%;
   }
 
-  @media (max-width: 768px) {
-    width: 100%;
-    left: 0px;
+  @media (max-width: 480px) {
+    width: 98%;
+    left: 1%;
   }
 
 
@@ -179,5 +179,22 @@ ul.navigation-shown {
     -moz-border-radius: 4px;
     border-radius: 4px;
     background: white;
+
+    .inner-container {
+      padding:10px;
+
+      label.radio { display: inline-block; }
+
+      .quantity {
+        width: 50px;
+      }
+      select {
+        width: 120px;
+      }
+
+      .buttons .clear-button {
+        float: right;
+      }
+    }
   }
 }

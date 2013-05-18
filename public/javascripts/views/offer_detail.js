@@ -38,11 +38,14 @@
 
     OfferDetail.prototype.events = {
       'click a.close-link': 'toggle',
-      'change select.crop-type': 'update_crop_subtype'
+      'change select.crop-type': 'update_crop_subtype',
+      'click input.offer-type': 'update_offer_type'
     };
 
     OfferDetail.prototype.render = function() {
       $(this.el).html(rwh(this.template, {}));
+      this.update_crop_subtype();
+      this.update_offer_type();
       return this;
     };
 
@@ -65,6 +68,14 @@
           h = h + ("<option value='" + k + "'>" + v + "</option>\n");
         }
         return $('select.crop-sub-type').html(h);
+      }
+    };
+
+    OfferDetail.prototype.update_offer_type = function() {
+      if ($('#offerType1:checked').size() > 0) {
+        return $('.offer-detail .accept-type').show();
+      } else {
+        return $('.offer-detail .accept-type').hide();
       }
     };
 
