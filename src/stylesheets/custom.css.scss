@@ -6,13 +6,19 @@
   text-align: center;
 }
 
+body {
+  background: #FFF9D4;
+  color: #53360E;
+  a { color: #53360E; }
+  a:hover { color: #53360E; }
+}
 
 .header {
   position: relative;
   margin: 15px 0;
   padding: 9px 9px 4px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #E1F58A;
+  border: 1px solid #53360E;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -80,8 +86,9 @@ ul.navigation-shown {
 
 .footer {
   padding: 8px;
-  background-color: #f7f7f9;
-  border: 1px solid #e1e1e8;
+  background-color: #E1F58A;
+
+  border: 1px solid #53360E;
   display: block;
   margin: 0 0 10px;
   font-size: 13px;
@@ -90,9 +97,6 @@ ul.navigation-shown {
   word-wrap: break-word;
   white-space: pre;
   white-space: pre-wrap;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -102,17 +106,23 @@ ul.navigation-shown {
 
 .home {
   .sharing-image {
+    img {
+      width: 500px;
+    }
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, 0.15);
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     overflow: hidden;
-    width:295px;
+    height:345px;
     text-align:right;
   }
   .sharing-text {
     text-align: center;
+  }
+  .logo {
+    height: 150px;
   }
 }
 

@@ -39,10 +39,8 @@
       $('.navigation').html(this.navigation.render().el);
       return this.navigation.delegateEvents();
     },
-    update_user_lat_long: function() {
-      if (CropSwap.logged_in_user) {
-        return new CropSwap.Models.Geocode(CropSwap.logged_in_user.location.name);
-      }
+    get_user_lat_long: function() {
+      return new CropSwap.Models.Geocode(CropSwap.logged_in_user.location.name);
     },
     is_logged_in: function() {
       return !!CropSwap.logged_in_user;
@@ -75,6 +73,7 @@
         console.log('loading');
         if (data.success === false) {
           console.log('registering user');
+          CropSwap.get_user_lat_long();
           user_data = {
             "fbID": CropSwap.logged_in_user.id,
             "userName": CropSwap.logged_in_user.name,

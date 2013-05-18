@@ -36,9 +36,8 @@ window.CropSwap =
     $('.navigation').html(@navigation.render().el)
     @navigation.delegateEvents()
 
-  update_user_lat_long: ->
-    if CropSwap.logged_in_user
-      new CropSwap.Models.Geocode(CropSwap.logged_in_user.location.name)
+  get_user_lat_long: ->
+    new CropSwap.Models.Geocode(CropSwap.logged_in_user.location.name)
 
   is_logged_in: ->
     !!CropSwap.logged_in_user
@@ -64,6 +63,9 @@ window.CropSwap =
       console.log 'loading'
       if data.success == false
         console.log 'registering user'
+
+        CropSwap.get_user_lat_long()
+
         user_data = {
           "fbID":CropSwap.logged_in_user.id,
           "userName":CropSwap.logged_in_user.name,
